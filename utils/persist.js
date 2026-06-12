@@ -10,7 +10,7 @@
 //     of gain above the +30% breakeven point. It never moves down.
 //   • Stop-out: exit the full remaining position if gain falls to/through the
 //     current stop level.
-
+var path = require("path");
 var INITIAL_STOP_PCT = -15;
 var BREAKEVEN_AT_PCT = 30;
 var SCALE_STEP_PCT   = 10;    // every +10% gain ...
@@ -75,8 +75,11 @@ function isEndOfDayWindow() {
 function etDateKey() {
   return new Date().toLocaleDateString("en-US", { timeZone: "America/New_York" });
 }
-
+function filePath(filename) {
+  return path.join(process.cwd(), filename);
+}
 module.exports = {
+  filePath: filePath,
   evaluate: evaluate,
   gainPct: gainPct,
   isEndOfDayWindow: isEndOfDayWindow,
