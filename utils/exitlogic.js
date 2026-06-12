@@ -1,3 +1,8 @@
+var path = require("path");
+
+function filePath(filename) {
+  return path.join(process.cwd(), filename);
+}
 var fs = require("fs");
 var PERSIST_FILE = require("./persist").filePath("orb-state.json");
 
@@ -120,6 +125,7 @@ module.exports = {
   getState: getState,
   resetDay: resetDay,
   setORB: setORB,
+  filePath: filePath,
   getPosition: getPosition,
   openHalfPosition: openHalfPosition,
   addSecondHalf: addSecondHalf,
